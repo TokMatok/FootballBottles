@@ -1,0 +1,6 @@
+framework module Pods_FootballBottles {
+  umbrella header "Pods-FootballBottles-umbrella.h"
+
+  export *
+  module * { export * }
+}
