@@ -655,6 +655,7 @@
 				DEVELOPMENT_TEAM = VNKCHQXD9T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FootballBottles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = test;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -684,6 +685,7 @@
 				DEVELOPMENT_TEAM = VNKCHQXD9T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FootballBottles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = test;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
