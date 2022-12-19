@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeagueVCCell: UICollectionViewCell {
+class LeagueCell: UICollectionViewCell {
     
     @IBOutlet weak var leagueImageView: UIImageView!
     @IBOutlet weak var leagueTitle: UILabel!

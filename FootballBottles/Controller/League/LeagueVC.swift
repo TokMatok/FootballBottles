@@ -39,8 +39,12 @@ extension LeagueVC: UICollectionViewDataSource, UICollectionViewDelegate {
         return leagues.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showVC(id: "team")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueVCCell", for: indexPath) as! LeagueVCCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! LeagueCell
         cell.setup(with: leagues[indexPath.row])
         return cell
     }
