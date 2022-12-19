@@ -9,8 +9,6 @@ import UIKit
 
 class PlayersCell: UITableViewCell {
     
-    
-    
     @IBOutlet weak var numberLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var positionLbl: UILabel!
@@ -24,7 +22,6 @@ class PlayersCell: UITableViewCell {
         positionLbl.text = players.position
         weightLbl.text = "\(players.weight)"
         growthLbl.text = "\(players.growth)"
-        
-        
     }
+    
 }

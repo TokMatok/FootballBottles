@@ -41,15 +41,6 @@ class PlayersVC: UIViewController {
     
 }
 
-
-
-
-
-
-
-
-
-
 extension PlayersVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         players.count
@@ -59,7 +50,6 @@ extension PlayersVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playersCell", for: indexPath) as! PlayersCell
         cell.setup(with: players[indexPath.row])
         
-
         return cell
     }
 }

@@ -28,6 +28,8 @@
 		376E93B42949FFC400587E5C /* FNews2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E93B32949FFC400587E5C /* FNews2VC.swift */; };
 		376E93B6294A04A500587E5C /* FactorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E93B5294A04A500587E5C /* FactorVC.swift */; };
 		376E93B8294A04D900587E5C /* MatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376E93B7294A04D900587E5C /* MatchesVC.swift */; };
+		3771F2122950D7B100A39E93 /* MatchesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771F2112950D7B100A39E93 /* MatchesCell.swift */; };
+		3771F2152950D85800A39E93 /* MatchesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771F2142950D85800A39E93 /* MatchesModel.swift */; };
 		377AA9A22948F1F000923F5F /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377AA9A12948F1F000923F5F /* LeagueCell.swift */; };
 		377AA9A42948F4D600923F5F /* LeagueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377AA9A32948F4D600923F5F /* LeagueVC.swift */; };
 		377AA9A82948F66B00923F5F /* LeagueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377AA9A72948F66B00923F5F /* LeagueName.swift */; };
@@ -91,6 +93,8 @@
 		376E93B32949FFC400587E5C /* FNews2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FNews2VC.swift; sourceTree = "<group>"; };
 		376E93B5294A04A500587E5C /* FactorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorVC.swift; sourceTree = "<group>"; };
 		376E93B7294A04D900587E5C /* MatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesVC.swift; sourceTree = "<group>"; };
+		3771F2112950D7B100A39E93 /* MatchesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesCell.swift; sourceTree = "<group>"; };
+		3771F2142950D85800A39E93 /* MatchesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesModel.swift; sourceTree = "<group>"; };
 		377AA9A12948F1F000923F5F /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
 		377AA9A32948F4D600923F5F /* LeagueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueVC.swift; sourceTree = "<group>"; };
 		377AA9A72948F66B00923F5F /* LeagueName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueName.swift; sourceTree = "<group>"; };
@@ -179,9 +183,10 @@
 		375D59332949ED2700D3F73C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				377AA9A72948F66B00923F5F /* LeagueName.swift */,
+				3771F2142950D85800A39E93 /* MatchesModel.swift */,
 				37C9DAC6294F6B3800AEC48A /* PlayersModel.swift */,
 				37C9DABF294F58B000AEC48A /* TeamsModel.swift */,
+				377AA9A72948F66B00923F5F /* LeagueName.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +219,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		3771F2132950D7B700A39E93 /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				3771F2112950D7B100A39E93 /* MatchesCell.swift */,
+				376E93B7294A04D900587E5C /* MatchesVC.swift */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
 		37BDDCFC29465F0100EC7A99 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,7 +248,7 @@
 				376E93B5294A04A500587E5C /* FactorVC.swift */,
 				3793CB5F29490F5D00F50331 /* CalendarVC.swift */,
 				376E93902949F96800587E5C /* TransferVC.swift */,
-				376E93B7294A04D900587E5C /* MatchesVC.swift */,
+				3771F2132950D7B700A39E93 /* Matches */,
 				37C9DAC5294F6B1A00AEC48A /* Players */,
 				373AA459294B9650007CE74E /* Teams */,
 				375D59352949EDE000D3F73C /* League */,
@@ -499,6 +513,7 @@
 				C459BA52294D4D070031C602 /* NewsDetailsVM.swift in Sources */,
 				C459BA42294D4D070031C602 /* FootballPre.swift in Sources */,
 				C459BA4E294D4D070031C602 /* CommomViewModel.swift in Sources */,
+				3771F2122950D7B100A39E93 /* MatchesCell.swift in Sources */,
 				376E93AB2949FBAB00587E5C /* ShopVC.swift in Sources */,
 				C459BA4F294D4D070031C602 /* ResponseData.swift in Sources */,
 				376E93A92949FB9900587E5C /* ReviewsVC.swift in Sources */,
@@ -521,6 +536,7 @@
 				376E93A52949FB6500587E5C /* AddNotesVC.swift in Sources */,
 				376E93992949FA2C00587E5C /* VictoriesVC.swift in Sources */,
 				376E939F2949FB1200587E5C /* FNewsVC.swift in Sources */,
+				3771F2152950D85800A39E93 /* MatchesModel.swift in Sources */,
 				37BDDCFB29465EF100EC7A99 /* LoginVC.swift in Sources */,
 				3701D88F294A52E400681970 /* MenuCell.swift in Sources */,
 				37C9DAC7294F6B3800AEC48A /* PlayersModel.swift in Sources */,

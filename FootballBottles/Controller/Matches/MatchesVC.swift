@@ -10,7 +10,7 @@ import UIKit
 class MatchesVC: UIViewController {
     
     @IBOutlet weak var metchesSegmentedControl: UISegmentedControl!
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +20,9 @@ class MatchesVC: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
         
         metchesSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
-
-        // Do any additional setup after loading the view.
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
-    
     
     
     @IBAction func menuDismiss(_ sender: Any) {
@@ -38,8 +37,17 @@ class MatchesVC: UIViewController {
         default: break
         }
     }
+}
+
+extension MatchesVC: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        matches.count
+    }
     
-    
-    
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "matchesCell", for: indexPath) as! MatchesCell
+        cell.setup(with: matches[indexPath.row])
+        
+        return cell
+    }
 }
