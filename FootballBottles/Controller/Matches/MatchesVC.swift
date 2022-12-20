@@ -24,7 +24,6 @@ class MatchesVC: UIViewController {
         collectionView.dataSource = self
     }
     
-    
     @IBAction func menuDismiss(_ sender: Any) {
         showVC(id: "menu")
     }
@@ -47,7 +46,7 @@ extension MatchesVC: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "matchesCell", for: indexPath) as! MatchesCell
         cell.setup(with: matches[indexPath.row])
-        
         return cell
     }
+    
 }

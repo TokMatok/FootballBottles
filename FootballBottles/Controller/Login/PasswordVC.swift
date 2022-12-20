@@ -8,15 +8,13 @@
 import UIKit
 
 class PasswordVC: UIViewController {
-
+    
     @IBOutlet weak var textLabel: UITextView!
     @IBOutlet weak var forgotPassTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         textLabel.layer.shadowOffset = CGSize(width: 0, height: 3)
         forgotPassTextField.attributedPlaceholder = NSAttributedString(string:"Ener your email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
@@ -33,14 +31,13 @@ class PasswordVC: UIViewController {
         sendButton.layer.shadowRadius = 0
         sendButton.layer.shadowColor = UIColor(red: 17/255, green: 52/255, blue: 84/255, alpha: 1).cgColor
         sendButton.layer.masksToBounds = false
-
+        
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "bg")
         self.view.insertSubview(backgroundImage, at: 0)
-
+        
     }
     
-
     @IBAction func passSendButton(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginVC
         vc.modalPresentationStyle = .fullScreen

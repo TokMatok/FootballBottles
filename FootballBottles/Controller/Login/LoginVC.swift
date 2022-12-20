@@ -8,14 +8,11 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
+    
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var loginText: UITextField!
     @IBOutlet weak var passText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,34 +42,18 @@ class LoginVC: UIViewController {
         backgroundImage.image = UIImage(named: "bg")
         self.view.insertSubview(backgroundImage, at: 0)
     }
-
+    
     @IBAction func segmentControl(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "reg") as! RegistrationVC
-            vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            present(vc, animated: true)
+            showVC(id: "reg")
         default: break
         }
     }
     
     @IBAction func loginButton(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "league") as! LeagueVC
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        present(vc, animated: true)
-        
+        showVC(id: "league")
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 

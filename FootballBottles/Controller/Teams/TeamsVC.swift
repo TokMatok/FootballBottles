@@ -11,10 +11,6 @@ class TeamsVC: UIViewController {
     
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,9 +20,6 @@ class TeamsVC: UIViewController {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "bg")
         self.view.insertSubview(backgroundImage, at: 0)
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
@@ -50,5 +43,6 @@ extension TeamsVC: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.setup(with: teams[indexPath.row])
         return cell
     }
+    
 }
 

@@ -21,13 +21,11 @@ class PlayersVC: UIViewController {
         
         playersTableView.dataSource = self
         playersTableView.delegate  = self
-        
         playersSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
         showVC(id: "menu")
-        
     }
     
     @IBAction func playersSegmentedControl(_ sender: Any) {
@@ -49,8 +47,8 @@ extension PlayersVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playersCell", for: indexPath) as! PlayersCell
         cell.setup(with: players[indexPath.row])
-        
         return cell
     }
+    
 }
 

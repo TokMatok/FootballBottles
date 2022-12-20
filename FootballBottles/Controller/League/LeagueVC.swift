@@ -8,10 +8,8 @@
 import UIKit
 
 class LeagueVC: UIViewController {
-
+    
     @IBOutlet weak var leagueCollectionView: UICollectionView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +46,6 @@ extension LeagueVC: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.setup(with: leagues[indexPath.row])
         return cell
     }
-    
-    
     
 }
 

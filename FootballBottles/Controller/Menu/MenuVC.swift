@@ -31,13 +31,11 @@ class MenuVC: UIViewController {
         menuTableView.isScrollEnabled = false
         menuTableView.dataSource = self
         menuTableView.delegate = self
-        
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
         dismiss(animated: true)
     }
-    
 }
 
 extension MenuVC: UITableViewDelegate, UITableViewDataSource {
@@ -49,46 +47,24 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuCell
         cell.menuLabel.text = cellName[indexPath.row]
         cell.menuImage.image = UIImage(named: "\(indexPath.row + 1)")
-        if cell.isSelected {
-            cell.menuLabel.textColor = UIColor.black
-        }
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0:
-            nextSreen(indentifier: "calendar")
-        case 1:
-            nextSreen(indentifier: "factor")
-        case 2:
-            nextSreen(indentifier: "league")
-        case 3:
-            nextSreen(indentifier: "news")
-        case 4:
-            nextSreen(indentifier: "notes")
-        case 5:
-            nextSreen(indentifier: "favorites")
-        case 6:
-            nextSreen(indentifier: "reviews")
-        case 7:
-            nextSreen(indentifier: "shop")
-        case 8:
-            nextSreen(indentifier: "rules")
-        case 9:
-            nextSreen(indentifier: "interactive")
+        case 0: showVC(id: "calendar")
+        case 1: showVC(id: "factor")
+        case 2: showVC(id: "league")
+        case 3: showVC(id: "news")
+        case 4: showVC(id: "notes")
+        case 5: showVC(id: "favorites")
+        case 6: showVC(id: "reviews")
+        case 7: showVC(id: "shop")
+        case 8: showVC(id: "rules")
+        case 9: showVC(id: "history")
         default:
             break
         }
     }
-    
-    func nextSreen(indentifier: String) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: indentifier)
-        vc!.modalPresentationStyle = .fullScreen
-        vc!.modalTransitionStyle = .crossDissolve
-        present(vc!, animated: true)
-    }
-    
-    
 }

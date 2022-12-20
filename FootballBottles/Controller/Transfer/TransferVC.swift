@@ -10,6 +10,7 @@ import UIKit
 class TransferVC: UIViewController {
     
     @IBOutlet weak var transferSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var transferTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,14 +20,14 @@ class TransferVC: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
         
         transferSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
-
-        // Do any additional setup after loading the view.
+        
+        transferTableView.dataSource = self
+        transferTableView.delegate = self
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
         showVC(id: "menu")
     }
-    
     
     @IBAction func transferSegmentedControl(_ sender: Any) {
         switch transferSegmentedControl.selectedSegmentIndex {
@@ -36,4 +37,17 @@ class TransferVC: UIViewController {
         default: break
         }
     }
+}
+
+extension TransferVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        transfer.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "transferCell", for: indexPath) as! TransferCell
+        cell.setup(with: transfer[indexPath.row])
+        return cell
+    }
+    
 }

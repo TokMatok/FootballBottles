@@ -17,6 +17,4 @@ class TeamsCell: UICollectionViewCell {
         teamsTextLbl.text = teams.title
     }
     
-    
-    
 }

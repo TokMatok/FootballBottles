@@ -15,7 +15,6 @@ class PlayersCell: UITableViewCell {
     @IBOutlet weak var weightLbl: UILabel!
     @IBOutlet weak var growthLbl: UILabel!
     
-    
     func setup(with players: Players) {
         numberLbl.text = "\(players.number)"
         nameLbl.text = players.name

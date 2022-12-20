@@ -17,5 +17,4 @@ class LeagueCell: UICollectionViewCell {
         leagueTitle.text = league.title
     }
     
-    
 }

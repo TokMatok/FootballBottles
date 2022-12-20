@@ -71,19 +71,13 @@ class RegistrationVC: UIViewController {
     @IBAction func regSegmentControl(_ sender: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {
         case 1:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginVC
-            vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            present(vc, animated: true)
+            showVC(id: "login")
         default: break
         }
     }
     
     @IBAction func regButton(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginVC
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        present(vc, animated: true)
+        showVC(id: "login")
     }
     
     
