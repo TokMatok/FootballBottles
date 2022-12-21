@@ -45,8 +45,8 @@ extension FactorVC: UITableViewDelegate, UITableViewDataSource {
         if selectedIndexPath == indexPath.row && isColllapse == true {
             return 180
             
-            } else {
-                
+        } else {
+            
             return 60
         }
     }
@@ -61,11 +61,19 @@ extension FactorVC: UITableViewDelegate, UITableViewDataSource {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundView
+        
+        if isColllapse {
+            cell.factorSecondView.isHidden = false
+            cell.factorButton.setImage(UIImage(named: "factorButtonActive"), for: .normal)
+        } else {
+            cell.factorSecondView.isHidden = true
+            cell.factorButton.setImage(UIImage(named: "factorButtonInactive"), for: .normal)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            selectedIndexPath = indexPath.row
+        selectedIndexPath = indexPath.row
         if  selectedIndexPath == indexPath.row {
             if self.isColllapse == false {
                 isColllapse = true

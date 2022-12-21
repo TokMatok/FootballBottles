@@ -271,6 +271,20 @@ func getView<T>(viewT: T.Type) -> T {
 // ***************************************************************
 extension UIViewController {
     
+    func setBackgroundImage(set image: String) {
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "\(image)")
+        self.view.insertSubview(backgroundImage, at: 0)
+    }
+    
+    func restartApp() {
+            let alert = UIAlertController(title: nil, message: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Need to reopen app for update app language." : "Необходимо повторно открыть приложение для обновления языка приложения." , preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "OK" : "ХОРОШО", style: .default, handler: { action in
+                exit(0);
+            }))
+        self.present(alert, animated: true, completion: nil)
+        }
+    
     func showVC(id: String) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "\(id)")
         vc!.modalPresentationStyle = .fullScreen

@@ -10,8 +10,11 @@ import UIKit
 class MenuVC: UIViewController {
     
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var ruLanguageSetButton: UIButton!
+    @IBOutlet weak var enLanguageSetButton: UIButton!
     
-    let cellName = [
+    //Menu cell name array
+    let enMenuName = [
         "Calendar",
         "Factor",
         "League",
@@ -24,28 +27,60 @@ class MenuVC: UIViewController {
         "Interactive"
     ]
     
+    let ruMenuName = [
+        "Календарь",
+        "Коэффициент",
+        "Лиги",
+        "Новости",
+        "Заметки",
+        "Любимые",
+        "Отзыв",
+        "Магазин",
+        "Правила",
+        "Интерактив"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //table view settings
         menuTableView.separatorStyle = .none
         menuTableView.isScrollEnabled = false
         menuTableView.dataSource = self
         menuTableView.delegate = self
+        
     }
     
+    //set language
+    @IBAction func setRuLanguage(_ sender: Any) {
+        restartApp()
+        LocalizationSystem.sharedInstance.setLanguage(languageCode: "ru")
+        ruLanguageSetButton.setImage(UIImage(named: "ruActive"), for: .normal)
+
+    }
+    
+    @IBAction func setEnLanguage(_ sender: Any) {
+        restartApp()
+        ruLanguageSetButton.setImage(UIImage(named: "ruInactive"), for: .normal)
+        LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
+    }
+    
+    //menu dismiss
     @IBAction func menuDismiss(_ sender: Any) {
         dismiss(animated: true)
     }
 }
 
+
 extension MenuVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cellName.count
+        enMenuName.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuCell
-        cell.menuLabel.text = cellName[indexPath.row]
+        
+        cell.menuLabel.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? enMenuName[indexPath.row] : ruMenuName[indexPath.row]
         cell.menuImage.image = UIImage(named: "\(indexPath.row + 1)")
         cell.selectionStyle = .none
         return cell

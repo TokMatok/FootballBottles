@@ -9,67 +9,64 @@ import UIKit
 
 class RegistrationVC: UIViewController {
     
-    @IBOutlet weak var segmentControl: UISegmentedControl!
+    //Labels
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var passLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var controlLabel: UILabel!
+    @IBOutlet weak var mailLabel: UILabel!
     
-    
+    //TextFields
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
-    @IBOutlet weak var dateOfBirth: UITextField!
-    @IBOutlet weak var controlWord: UITextField!
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var regButton: UIButton!
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var controlWordField: UITextField!
+    @IBOutlet weak var mailTextField: UITextField!
     
+    //Button
+    @IBOutlet weak var regButton: UIButton!
+    @IBOutlet weak var segControlButton: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginTextField.layer.borderWidth = 1
-        loginTextField.layer.borderColor = UIColor.init(red: 56/255, green: 99/255, blue: 253/255, alpha: 1).cgColor
-        loginTextField.attributedPlaceholder = NSAttributedString(string:"Think a login", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        loginTextField.clipsToBounds = true
-        loginTextField.layer.cornerRadius = 10
+        //TextField settings
+        loginTextField.addStyleBorder()
+        passTextField.addStyleBorder()
+        dateTextField.addStyleBorder()
+        controlWordField.addStyleBorder()
+        mailTextField.addStyleBorder()
         
-        passTextField.layer.borderWidth = 1
-        passTextField.layer.borderColor = UIColor.init(red: 56/255, green: 99/255, blue: 253/255, alpha: 1).cgColor
-        passTextField.attributedPlaceholder = NSAttributedString(string:"Think a password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        passTextField.clipsToBounds = true
-        passTextField.layer.cornerRadius = 10
+        //Button settings
+        regButton.addStyleButton()
+        segControlButton.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         
-        dateOfBirth.layer.borderWidth = 1
-        dateOfBirth.layer.borderColor = UIColor.init(red: 56/255, green: 99/255, blue: 253/255, alpha: 1).cgColor
-        dateOfBirth.attributedPlaceholder = NSAttributedString(string:"Enter your birth", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        dateOfBirth.clipsToBounds = true
-        dateOfBirth.layer.cornerRadius = 10
+        //Localizations
+        loginTextField.attributedPlaceholder = NSAttributedString(string:LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Think a login" : "Придумайте логин", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passTextField.attributedPlaceholder = NSAttributedString(string: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Think a password" : "Придумайте пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        dateTextField.attributedPlaceholder = NSAttributedString(string: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Enter your birth" : "Введите дату рождения", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        dateTextField.clipsToBounds = true
+        controlWordField.attributedPlaceholder = NSAttributedString(string: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Enter your control word" : "Введите контрольное слово", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        mailTextField.attributedPlaceholder = NSAttributedString(string: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Enter your email" : "Введите вашу почту", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        regButton.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "REGISTRATION" : "РЕГИСТРАЦИЯ", for: .normal)
+        segControlButton.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Registration" : "Регистрация", forSegmentAt: 0)
+        segControlButton.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Login" : "Вход", forSegmentAt: 1)
         
-        controlWord.layer.borderWidth = 1
-        controlWord.layer.borderColor = UIColor.init(red: 56/255, green: 99/255, blue: 253/255, alpha: 1).cgColor
-        controlWord.attributedPlaceholder = NSAttributedString(string:"Enter your control word", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        controlWord.clipsToBounds = true
-        controlWord.layer.cornerRadius = 10
+        titleLabel.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Registration" : "Регистрация"
+        loginLabel.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Login" : "Логин"
+        passLabel.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Password" : "Пароль"
+        dateLabel.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Date of birth" : "Дата рождения"
+        controlLabel.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Control word" : "Контрольное слово"
+        mailLabel.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Email" : "Почта"
         
-        email.layer.borderWidth = 1
-        email.layer.borderColor = UIColor.init(red: 56/255, green: 99/255, blue: 253/255, alpha: 1).cgColor
-        email.attributedPlaceholder = NSAttributedString(string:"Enter your email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        email.clipsToBounds = true
-        email.layer.cornerRadius = 10
-        
-        regButton.layer.cornerRadius = 2
-        regButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        regButton.layer.shadowOpacity = 1
-        regButton.layer.shadowRadius = 0
-        regButton.layer.shadowColor = UIColor(red: 17/255, green: 52/255, blue: 84/255, alpha: 1).cgColor
-        regButton.layer.masksToBounds = false
-        
-        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-        
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "bg")
-        self.view.insertSubview(backgroundImage, at: 0)
-        
+        //Set background image
+        setBackgroundImage(set: "bg")
     }
     
+    //Button actions
     @IBAction func regSegmentControl(_ sender: UISegmentedControl) {
-        switch segmentControl.selectedSegmentIndex {
+        switch segControlButton.selectedSegmentIndex {
         case 1:
             showVC(id: "login")
         default: break
@@ -79,6 +76,24 @@ class RegistrationVC: UIViewController {
     @IBAction func regButton(_ sender: Any) {
         showVC(id: "login")
     }
+}
+
+//Style extension
+
+extension UIView {
+    func addStyleBorder() {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.init(red: 56/255, green: 99/255, blue: 253/255, alpha: 1).cgColor
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 10
+    }
     
-    
+    func addStyleButton() {
+        self.layer.cornerRadius = 2
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = 0
+        self.layer.shadowColor = UIColor(red: 17/255, green: 52/255, blue: 84/255, alpha: 1).cgColor
+        self.layer.masksToBounds = false
+    }
 }

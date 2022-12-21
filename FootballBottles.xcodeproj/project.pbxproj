@@ -282,8 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				3791F69A2948CC4100A3E84A /* PasswordVC.swift */,
-				373E1AC02948AAA500138F8B /* RegistrationVC.swift */,
 				37BDDCFA29465EF100EC7A99 /* LoginVC.swift */,
+				373E1AC02948AAA500138F8B /* RegistrationVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
