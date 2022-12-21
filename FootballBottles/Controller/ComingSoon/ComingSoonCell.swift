@@ -24,4 +24,5 @@ class ComingSoonCell: UICollectionViewCell {
         firstTeamImg.image = comingSoon.firstTeamImg
         secontTeamImg.image = comingSoon.secondTeamImg
     }
+    
 }
