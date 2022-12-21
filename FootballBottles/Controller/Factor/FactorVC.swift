@@ -45,7 +45,8 @@ extension FactorVC: UITableViewDelegate, UITableViewDataSource {
         if selectedIndexPath == indexPath.row && isColllapse == true {
             return 180
             
-        } else {
+            } else {
+                
             return 60
         }
     }

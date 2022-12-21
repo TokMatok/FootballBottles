@@ -25,6 +25,6 @@ let leagues: [League] = [
     League(title: "SpecialLeagues11", image: UIImage(named: "ball")!),
     League(title: "SpecialLeagues12", image: UIImage(named: "ball")!),
     League(title: "SpecialLeagues13", image: UIImage(named: "ball")!),
-    League(title: "SpecialLeagues14", image: UIImage(named: "ball")!),
+    League(title: "SpecialLeagues14", image: UIImage(named: "ball")!)
 ]
 
