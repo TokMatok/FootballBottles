@@ -51,12 +51,11 @@ class MenuVC: UIViewController {
         
     }
     
-    //set language
+    //button action
     @IBAction func setRuLanguage(_ sender: Any) {
         restartApp()
         LocalizationSystem.sharedInstance.setLanguage(languageCode: "ru")
         ruLanguageSetButton.setImage(UIImage(named: "ruActive"), for: .normal)
-
     }
     
     @IBAction func setEnLanguage(_ sender: Any) {
@@ -65,7 +64,6 @@ class MenuVC: UIViewController {
         LocalizationSystem.sharedInstance.setLanguage(languageCode: "en")
     }
     
-    //menu dismiss
     @IBAction func menuDismiss(_ sender: Any) {
         dismiss(animated: true)
     }

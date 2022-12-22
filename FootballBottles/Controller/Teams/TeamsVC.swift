@@ -9,6 +9,8 @@ import UIKit
 
 class TeamsVC: UIViewController {
     
+    //
+    @IBOutlet weak var teamsTitle: UILabel!
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -17,9 +19,11 @@ class TeamsVC: UIViewController {
         teamsCollectionView.dataSource = self
         teamsCollectionView.delegate = self
         
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "bg")
-        self.view.insertSubview(backgroundImage, at: 0)
+        //set background
+        setBackgroundImage(set: "bg")
+        
+        //localization
+        teamsTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Teams" : "Команды"
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
@@ -43,6 +47,7 @@ extension TeamsVC: UICollectionViewDataSource, UICollectionViewDelegate {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundView
+        cell.teamsTextLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "EN" : "RU"
         cell.setup(with: teams[indexPath.row])
         return cell
     }

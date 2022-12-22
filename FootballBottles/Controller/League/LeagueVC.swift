@@ -10,10 +10,13 @@ import UIKit
 class LeagueVC: UIViewController {
     
     @IBOutlet weak var leagueCollectionView: UICollectionView!
+    @IBOutlet weak var leagueTitle: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        leagueTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "League" : "Лига"
         leagueCollectionView.dataSource = self
         leagueCollectionView.delegate = self
         
@@ -24,10 +27,7 @@ class LeagueVC: UIViewController {
     }
     
     @IBAction func menuButton(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "menu") as! MenuVC
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        present(vc, animated: true)
+        showVC(id: "menu")
     }
     
 }
@@ -46,6 +46,7 @@ extension LeagueVC: UICollectionViewDataSource, UICollectionViewDelegate {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundView
+        cell.leagueTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "EN" : "RU"
         cell.setup(with: leagues[indexPath.row])
         return cell
     }

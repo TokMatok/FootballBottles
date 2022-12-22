@@ -8,65 +8,32 @@
 import UIKit
 
 class CalendarVC: UIViewController {
-
-            
-    override func viewDidLoad() {
-            super.viewDidLoad()
-            configureCalendar()
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "bg")
-        self.view.insertSubview(backgroundImage, at: 0)
-
-        }
-
-    @IBOutlet weak var calendarLabel: UILabel!
     
-        private func configureCalendar() {
-            let calendarView = UICalendarView()
-            calendarView.calendar = .current
-            calendarView.locale = .current
-
-            calendarView.visibleDateComponents = DateComponents(calendar: .current, year: 2022, month: 5)
-
-            calendarView.fontDesign = .rounded
-            calendarView.backgroundColor = .white
-            calendarView.layer.cornerRadius = 16
-
-            let dateSelection = UICalendarSelectionMultiDate(delegate: self)
-            calendarView.selectionBehavior = dateSelection
-            calendarView.tintColor = .black
-
-            calendarView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(calendarView)
-
-            NSLayoutConstraint.activate([
-                calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-                calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-                calendarView.topAnchor.constraint(equalTo: calendarLabel.bottomAnchor, constant: 60),
-                calendarView.heightAnchor.constraint(equalToConstant: 330)
-            ])
-        }
+    //labels
+    @IBOutlet weak var calendarTitle: UILabel!
+    
+    //buttons
+    @IBOutlet weak var calendarButton: UIButton!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //set background
+        setBackgroundImage(set: "bg")
+        
+        //localization
+        calendarTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Calendar" : "Календарь"
+        calendarButton.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "PICK DATE" : "ВЫБЕРИТЕ ДАТУ", for: .normal)
     }
-
-    extension CalendarVC: UICalendarSelectionMultiDateDelegate {
-        func multiDateSelection( _ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
-
-        }
-
-        func multiDateSelection( _ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
-
-        }
-
-        func multiDateSelection( selection: UICalendarSelectionMultiDate, canSelectDate dateComponents: DateComponents) -> Bool {
-            false
-        }
-
-        
-        
+    
+    //button actions
     @IBAction func menuDismiss(_ sender: Any) {
-        dismiss(animated: true)
+        showVC(id: "menu")
     }
-
+    @IBAction func pickDate(_ sender: Any) {
+    }
+    
 }
 
 

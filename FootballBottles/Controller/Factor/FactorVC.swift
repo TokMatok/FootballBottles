@@ -11,27 +11,27 @@ class FactorVC: UIViewController {
     
     @IBOutlet weak var factorTableView: UITableView!
     
-    var arrNames = ["BadaBoom", "TranslateSoccer", "Football Match", "expressFat"]
+    var arrNames = ["BadaBoom", "TranslateSoccer", "Football Match", "ExpressFat"]
+    var arrScore = [12,32,300,123]
     
     var selectedIndexPath: Int?
-    var isColllapse = false
+    var isCollapse = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "bg")
-        self.view.insertSubview(backgroundImage, at: 0)
-        
+                
         factorTableView.delegate = self
         factorTableView.dataSource = self
         
         factorTableView.estimatedRowHeight = 180
         factorTableView.rowHeight = UITableView.automaticDimension
+        
+        //set background
+        setBackgroundImage(set: "bg")
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
-        dismiss(animated: true)
+        showVC(id: "menu")
     }
     
     
@@ -42,11 +42,9 @@ extension FactorVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if selectedIndexPath == indexPath.row && isColllapse == true {
+        if selectedIndexPath == indexPath.row && isCollapse == true {
             return 180
-            
         } else {
-            
             return 60
         }
     }
@@ -58,11 +56,12 @@ extension FactorVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "factorCell", for: indexPath) as! FactorCell
         cell.factorLbl.text = arrNames[indexPath.row]
+        cell.factorNumberLbl.text = "\(arrScore[indexPath.row])"
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundView
         
-        if isColllapse {
+        if isCollapse {
             cell.factorSecondView.isHidden = false
             cell.factorButton.setImage(UIImage(named: "factorButtonActive"), for: .normal)
         } else {
@@ -75,17 +74,17 @@ extension FactorVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath.row
         if  selectedIndexPath == indexPath.row {
-            if self.isColllapse == false {
-                isColllapse = true
+            if self.isCollapse == true {
+                isCollapse = false
             } else {
-                isColllapse = false
+                isCollapse = true
             }
         }
         
         selectedIndexPath = indexPath.row
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
-        print(isColllapse, indexPath.row)
+        print(isCollapse, indexPath.row)
     }
     
 }
