@@ -9,18 +9,16 @@ import UIKit
 
 class InteractiveVC: UIViewController {
 
+    @IBOutlet weak var interactiveTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "bg")
-        self.view.insertSubview(backgroundImage, at: 0)
-
-
-        // Do any additional setup after loading the view.
+        setBackgroundImage(set: "bg")
+        interactiveTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Interactive" : "Интерактив"
     }
     @IBAction func menuDismiss(_ sender: Any) {
-        dismiss(animated: true)
+        showVC(id: "menu")
     }
 
     /*

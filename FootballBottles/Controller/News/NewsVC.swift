@@ -8,7 +8,8 @@
 import UIKit
 
 class NewsVC: UIViewController {
-
+    
+    @IBOutlet weak var newsLbl: UILabel!
     @IBOutlet weak var newsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -19,12 +20,15 @@ class NewsVC: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
         newsTableView.delegate = self
         newsTableView.dataSource = self
+        
+        //Localization
+        newsLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "News" : "Новости"
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
-        dismiss(animated: true)
+        showVC(id: "menu")
     }
-
+    
 }
 
 extension NewsVC: UITableViewDelegate, UITableViewDataSource {

@@ -10,6 +10,7 @@ import UIKit
 class FactorVC: UIViewController {
     
     @IBOutlet weak var factorTableView: UITableView!
+    @IBOutlet weak var factorTitle: UILabel!
     
     var arrNames = ["BadaBoom", "TranslateSoccer", "Football Match", "ExpressFat"]
     var arrScore = [12,32,300,123]
@@ -19,7 +20,7 @@ class FactorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         factorTableView.delegate = self
         factorTableView.dataSource = self
         
@@ -28,6 +29,7 @@ class FactorVC: UIViewController {
         
         //set background
         setBackgroundImage(set: "bg")
+        factorTitle.text =  LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Factor" : "Фактор"
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
@@ -62,10 +64,16 @@ extension FactorVC: UITableViewDelegate, UITableViewDataSource {
         cell.selectedBackgroundView = backgroundView
         
         if isCollapse {
-            cell.factorSecondView.isHidden = false
+            cell.factorBottomView.isHidden = false
+            cell.factorFirstTeamImage.isHidden = false
+            cell.factorSecondTeamImage.isHidden = false
             cell.factorButton.setImage(UIImage(named: "factorButtonActive"), for: .normal)
+            
         } else {
-            cell.factorSecondView.isHidden = true
+            
+            cell.factorBottomView.isHidden = true
+            cell.factorFirstTeamImage.isHidden = true
+            cell.factorSecondTeamImage.isHidden = true
             cell.factorButton.setImage(UIImage(named: "factorButtonInactive"), for: .normal)
         }
         return cell
@@ -74,10 +82,12 @@ extension FactorVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath.row
         if  selectedIndexPath == indexPath.row {
-            if self.isCollapse == true {
-                isCollapse = false
-            } else {
+            if self.isCollapse == false {
                 isCollapse = true
+                
+            } else {
+                
+                isCollapse = false
             }
         }
         

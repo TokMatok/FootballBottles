@@ -9,6 +9,8 @@ import UIKit
 
 class AddNotesVC: UIViewController {
 
+    @IBOutlet weak var addNotesTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,7 +18,7 @@ class AddNotesVC: UIViewController {
         backgroundImage.image = UIImage(named: "bg")
         self.view.insertSubview(backgroundImage, at: 0)
 
-        // Do any additional setup after loading the view.
+        addNotesTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Add notes" : "Создание заметки"
     }
     @IBAction func menuDismiss(_ sender: Any) {
         dismiss(animated: true)

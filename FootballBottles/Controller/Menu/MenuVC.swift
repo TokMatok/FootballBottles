@@ -29,7 +29,7 @@ class MenuVC: UIViewController {
     
     let ruMenuName = [
         "Календарь",
-        "Коэффициент",
+        "Фактор",
         "Лиги",
         "Новости",
         "Заметки",

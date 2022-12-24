@@ -9,28 +9,20 @@ import UIKit
 
 class FNews2VC: UIViewController {
 
+    @IBOutlet weak var fNews2Title: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "bg")
         self.view.insertSubview(backgroundImage, at: 0)
-
-
-        // Do any additional setup after loading the view.
+        
+        //Localization
+        fNews2Title.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "News" : "Новости"
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
         dismiss(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

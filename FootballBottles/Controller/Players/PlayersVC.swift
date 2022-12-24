@@ -9,8 +9,15 @@ import UIKit
 
 class PlayersVC: UIViewController {
     
+    
+    @IBOutlet weak var playersTitle: UILabel!
     @IBOutlet weak var playersSegmentedControl: UISegmentedControl!
     @IBOutlet weak var playersTableView: UITableView!
+    
+    @IBOutlet weak var nameTitle: UILabel!
+    @IBOutlet weak var positionTitle: UILabel!
+    @IBOutlet weak var weightTitle: UILabel!
+    @IBOutlet weak var growthTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +29,17 @@ class PlayersVC: UIViewController {
         playersTableView.dataSource = self
         playersTableView.delegate  = self
         playersSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
+        
+        //Localization
+        playersTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Players" : "Игроки"
+        nameTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Name" : "Имя"
+        positionTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Weight" : "Масса"
+        positionTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Growth" : "Рост"
+        
+        playersSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Players" : "Игроки", forSegmentAt: 0)
+        playersSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Matches" : "Матчи", forSegmentAt: 1)
+        playersSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Transfer" : "Трансфер", forSegmentAt: 2)
+        
     }
     
     @IBAction func menuDismiss(_ sender: Any) {

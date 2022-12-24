@@ -9,7 +9,8 @@ import UIKit
 
 class MatchesVC: UIViewController {
     
-    @IBOutlet weak var metchesSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var matchesTitle: UILabel!
+    @IBOutlet weak var matchesSegmentedControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -18,10 +19,18 @@ class MatchesVC: UIViewController {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "bg")
         self.view.insertSubview(backgroundImage, at: 0)
-        
-        metchesSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
+                
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        matchesSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
+
+        //Loacalization
+        matchesTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Matches" : "Матчи"
+        matchesSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Players" : "Игроки", forSegmentAt: 0)
+        matchesSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Matches" : "Матчи", forSegmentAt: 1)
+        matchesSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Transfer" : "Трансфер", forSegmentAt: 2)
+        
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
@@ -29,7 +38,7 @@ class MatchesVC: UIViewController {
     }
     
     @IBAction func matchesSegmentedControl(_ sender: Any) {
-        switch metchesSegmentedControl.selectedSegmentIndex {
+        switch matchesSegmentedControl.selectedSegmentIndex {
         case 0: showVC(id: "players")
         case 1: showVC(id: "matches")
         case 2: showVC(id: "transfer")

@@ -9,8 +9,10 @@ import UIKit
 
 class VictoriesVC: UIViewController {
     
+    @IBOutlet weak var victoriesLbl: UILabel!
     @IBOutlet weak var victoriesSegmentedControl: UISegmentedControl!
     @IBOutlet weak var victoriesCollectionView: UICollectionView!
+    @IBOutlet weak var comingSoonButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,14 @@ class VictoriesVC: UIViewController {
         victoriesCollectionView.delegate = self
         victoriesCollectionView.dataSource = self
         victoriesSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
+        
+        //Loacalization
+        victoriesLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Victories" : "Победы"
+        comingSoonButton.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Coming Soon" : "Скоро", for: .normal)
+        victoriesSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "History" : "История", forSegmentAt: 0)
+        victoriesSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Statistic" : "Статистика", forSegmentAt: 1)
+        victoriesSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Victories" : "Победы", forSegmentAt: 2)
+        
     }
     
     @IBAction func comingSoonShow(_ sender: Any) {

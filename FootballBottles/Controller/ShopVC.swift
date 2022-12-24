@@ -8,29 +8,29 @@
 import UIKit
 
 class ShopVC: UIViewController {
-
+    
+    @IBOutlet weak var shopTitle: UILabel!
+    @IBOutlet weak var restoreButtonLabel: UIButton!
+    @IBOutlet weak var priceButtonLabel: UIButton!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setBackgroundImage(set: "bg")
         
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "bg")
-        self.view.insertSubview(backgroundImage, at: 0)
-
-        // Do any additional setup after loading the view.
+        //Localization
+        shopTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Shop" : "Магазин"
+        restoreButtonLabel.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Restore" : "Восстановить", for: .normal)
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
-        dismiss(animated: true)
+        showVC(id: "menu")
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func priceButton(_ sender: Any) {
     }
-    */
-
+    
+    @IBAction func restoreButton(_ sender: Any) {
+    }
 }

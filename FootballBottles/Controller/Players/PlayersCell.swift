@@ -9,6 +9,9 @@ import UIKit
 
 class PlayersCell: UITableViewCell {
     
+    // Title
+    
+    
     @IBOutlet weak var numberLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var positionLbl: UILabel!

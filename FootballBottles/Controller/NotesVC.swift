@@ -9,6 +9,7 @@ import UIKit
 
 class NotesVC: UIViewController {
 
+    @IBOutlet weak var notesTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,8 +17,8 @@ class NotesVC: UIViewController {
         backgroundImage.image = UIImage(named: "bg")
         self.view.insertSubview(backgroundImage, at: 0)
 
-
-        // Do any additional setup after loading the view.
+        
+        notesTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Notes" : "Заметки"
     }
     
     @IBAction func menuDismiss(_ sender: Any) {

@@ -11,6 +11,7 @@ class HistoryCell: UICollectionViewCell {
     
     @IBOutlet weak var favoritesImg: UIImageView!
     @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var firstTeamLbl: UILabel!
     @IBOutlet weak var secondTeamLbl: UILabel!
     @IBOutlet weak var firstTeamImg: UIImageView!
@@ -19,6 +20,7 @@ class HistoryCell: UICollectionViewCell {
     func setup(with history: History) {
         favoritesImg.image = history.favorites
         timeLbl.text = history.time
+        dateLbl.text = history.date
         firstTeamLbl.text = history.firstTeam
         secondTeamLbl.text = history.secondTeam
         firstTeamImg.image = history.firstTeamImg

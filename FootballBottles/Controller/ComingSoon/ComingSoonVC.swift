@@ -9,8 +9,10 @@ import UIKit
 
 class ComingSoonVC: UIViewController {
     
+    @IBOutlet weak var comingSoonLbl: UILabel!
     @IBOutlet weak var comingSoonSegmentedControl: UISegmentedControl!
     @IBOutlet weak var comingSoonCollectionView: UICollectionView!
+    @IBOutlet weak var comingSoonButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,14 @@ class ComingSoonVC: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
         
         comingSoonSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
+        
+        //Localization
+        comingSoonLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Coming Soon" : "Скоро"
+        comingSoonButton.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Coming Soon" : "Скоро", for: .normal)
+        comingSoonSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "History" : "История", forSegmentAt: 0)
+        comingSoonSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Statistic" : "Статистика", forSegmentAt: 1)
+        comingSoonSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Victories" : "Победы", forSegmentAt: 2)
+        
     }
     
     @IBAction func segmentControl(_ sender: Any) {

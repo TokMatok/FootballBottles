@@ -10,6 +10,8 @@ import UIKit
 class StatisticVC: UIViewController {
     
     @IBOutlet weak var statisticTableView: UITableView!
+    @IBOutlet weak var statisticLbl: UILabel!
+    @IBOutlet weak var comingSoonButton: UIButton!
     @IBOutlet weak var statisticSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -23,6 +25,13 @@ class StatisticVC: UIViewController {
         statisticTableView.dataSource = self
         statisticSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
 
+        //Localization
+        statisticLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Statistic" : "Статистика"
+        comingSoonButton.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Coming Soon" : "Скоро", for: .normal)
+        statisticSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "History" : "История", forSegmentAt: 0)
+        statisticSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Statistic" : "Статистика", forSegmentAt: 1)
+        statisticSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Victories" : "Победы", forSegmentAt: 2)
+        
     }
     
     @IBAction func comingSoonShow(_ sender: Any) {

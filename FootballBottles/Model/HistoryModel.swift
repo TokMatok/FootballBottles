@@ -10,6 +10,7 @@ import UIKit
 struct History {
     let favorites: UIImage!
     let time: String
+    let date: String
     let firstTeam: String
     let secondTeam: String
     let firstTeamImg: UIImage!
@@ -17,8 +18,8 @@ struct History {
 }
 
 let history: [History] = [
-    History(favorites: UIImage(named: "heartEmpty"), time: "13:00 15 June" , firstTeam: "PerfectTeam", secondTeam: "TeamLiquid", firstTeamImg: UIImage(named: "ball"), secondTeamImg: UIImage(named: "ball")),
-    History(favorites: UIImage(named: "heartEmpty"), time: "13:00 15 June" , firstTeam: "PerfectTeam", secondTeam: "TeamLiquid",firstTeamImg: UIImage(named:"ball"),secondTeamImg:UIImage(named:"ball")),
-    History(favorites: UIImage(named: "heartEmpty"), time: "13:00 15 June" , firstTeam: "PerfectTeam", secondTeam: "TeamLiquid", firstTeamImg: UIImage(named: "ball"), secondTeamImg: UIImage(named: "ball")),
-    History(favorites: UIImage(named: "heartEmpty"), time: "13:00 15 June" , firstTeam: "PerfectTeam", secondTeam: "TeamLiquid", firstTeamImg: UIImage(named: "ball"), secondTeamImg: UIImage(named: "ball"))
+    History(favorites: UIImage(named: "heartEmpty"), time: "13:00", date: "14 Jule" , firstTeam: "PerfectTeam", secondTeam: "TeamLiquid", firstTeamImg: UIImage(named: "ball"), secondTeamImg: UIImage(named: "ball")),
+    History(favorites: UIImage(named: "heartEmpty"), time: "13:00", date: "14 Jule" , firstTeam: "PerfectTeam", secondTeam: "TeamLiquid", firstTeamImg: UIImage(named: "ball"), secondTeamImg: UIImage(named: "ball")),
+    History(favorites: UIImage(named: "heartEmpty"), time: "13:00", date: "14 Jule" , firstTeam: "PerfectTeam", secondTeam: "TeamLiquid", firstTeamImg: UIImage(named: "ball"), secondTeamImg: UIImage(named: "ball")),
+    History(favorites: UIImage(named: "heartEmpty"), time: "13:00", date: "14 Jule" , firstTeam: "PerfectTeam", secondTeam: "TeamLiquid", firstTeamImg: UIImage(named: "ball"), secondTeamImg: UIImage(named: "ball"))
 ]

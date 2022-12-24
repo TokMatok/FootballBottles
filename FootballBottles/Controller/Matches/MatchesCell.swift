@@ -11,6 +11,8 @@ class MatchesCell: UICollectionViewCell {
     
     @IBOutlet weak var favoritesImg: UIImageView!
     @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var dateLbl: UILabel!
+    
     @IBOutlet weak var firstTeamLbl: UILabel!
     @IBOutlet weak var secondTeamLbl: UILabel!
     @IBOutlet weak var firstTeamImg: UIImageView!
@@ -19,6 +21,7 @@ class MatchesCell: UICollectionViewCell {
     func setup(with matches: Matches) {
         favoritesImg.image = matches.favorites
         timeLbl.text = matches.time
+        dateLbl.text = matches.date
         firstTeamLbl.text = matches.firstTeam
         secondTeamLbl.text = matches.secondTeam
         firstTeamImg.image = matches.firstTeamImg

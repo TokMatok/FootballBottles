@@ -9,8 +9,11 @@ import UIKit
 
 class HistoryVC: UIViewController {
     
+    
+    @IBOutlet weak var historyTitle: UILabel!
     @IBOutlet weak var historyColectionView: UICollectionView!
     @IBOutlet weak var historySegmentedControl: UISegmentedControl!
+    @IBOutlet weak var historyComingSoonButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,14 @@ class HistoryVC: UIViewController {
         historyColectionView.delegate = self
         historyColectionView.dataSource = self
         historySegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white] , for: .normal)
-
+        
+        
+        //Localization
+        historyTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "History" : "История"
+        historyComingSoonButton.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Coming Soon" : "Скоро", for: .normal)
+        historySegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "History" : "История", forSegmentAt: 0)
+        historySegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Statistic" : "Статистика", forSegmentAt: 1)
+        historySegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Victories" : "Победы", forSegmentAt: 2)
     }
     
     @IBAction func segmentControl(_ sender: Any) {

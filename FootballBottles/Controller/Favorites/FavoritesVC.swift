@@ -10,6 +10,7 @@ import UIKit
 class FavoritesVC: UIViewController {
     
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
+    @IBOutlet weak var favoritesTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class FavoritesVC: UIViewController {
         
         favoritesCollectionView.delegate = self
         favoritesCollectionView.dataSource = self
+        favoritesTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Favorite" : "Избранное"
     }
     
     @IBAction func menuDismiss(_ sender: Any) {

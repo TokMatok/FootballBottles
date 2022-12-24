@@ -9,8 +9,13 @@ import UIKit
 
 class TransferVC: UIViewController {
     
+    @IBOutlet weak var transferLbl: UILabel!
     @IBOutlet weak var transferSegmentedControl: UISegmentedControl!
     @IBOutlet weak var transferTableView: UITableView!
+    
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var clubLbl: UILabel!
+    @IBOutlet weak var costsLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +28,12 @@ class TransferVC: UIViewController {
         
         transferTableView.dataSource = self
         transferTableView.delegate = self
+        
+        //Localization
+        transferLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Transfer" : "Трансфер"
+        nameLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Name" : "Имя"
+        clubLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Club" : "Клуб"
+        costsLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Costs" : "Стоимость"
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
