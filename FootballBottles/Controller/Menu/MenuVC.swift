@@ -33,7 +33,7 @@ class MenuVC: UIViewController {
         "Лиги",
         "Новости",
         "Заметки",
-        "Любимые",
+        "Избранное",
         "Отзыв",
         "Магазин",
         "Правила",
@@ -95,7 +95,7 @@ extension MenuVC: UITableViewDelegate, UITableViewDataSource {
         case 6: showVC(id: "reviews")
         case 7: showVC(id: "shop")
         case 8: showVC(id: "rules")
-        case 9: showVC(id: "history")
+        case 9: showVC(id: "interactive")
         default:
             break
         }

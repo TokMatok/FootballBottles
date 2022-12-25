@@ -1,22 +1,36 @@
 //
 //  StatisticModel.swift
-//  FootballBottles
+//  Total control Football
 //
-//  Created by Golyakovph on 20.12.2022.
+//  Created by Ramazan Abdulaev on 31.10.2022.
 //
 
-import UIKit
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
 
-struct Statistic {
-    let firstTeamGoal: Int
-    let secondTeamGoal: Int
-    let stat: String
+import Foundation
+
+// MARK: - Welcome
+struct Statistics: Codable {
+    let statistics: [Statistic]
 }
 
-let statistic: [Statistic] = [
-Statistic(firstTeamGoal: 6, secondTeamGoal: 5, stat: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Goals" : "Голы"),
-Statistic(firstTeamGoal: 0, secondTeamGoal: 3, stat: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Corners" : "Угловые"),
-Statistic(firstTeamGoal: 2, secondTeamGoal: 1, stat: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Attacks" : "Атаки"),
-Statistic(firstTeamGoal: 4, secondTeamGoal: 4, stat: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Red cards" : "Красные карточки"),
-Statistic(firstTeamGoal: 1, secondTeamGoal: 0, stat: LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Yellow cards" : "Желтые карточки")
-]
+// MARK: - Statistic
+struct Statistic: Codable {
+    let period: String
+    let groups: [Group]
+}
+
+// MARK: - Group
+struct Group: Codable {
+    let groupName: String
+    let statisticsItems: [StatisticsItem]
+}
+
+// MARK: - StatisticsItem
+struct StatisticsItem: Codable {
+    let name, home, away: String
+    let compareCode: Int
+}

@@ -21,7 +21,8 @@ class FavoritesVC: UIViewController {
         
         favoritesCollectionView.delegate = self
         favoritesCollectionView.dataSource = self
-        favoritesTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Favorite" : "Избранное"
+        favoritesTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Favorites" : "Избранное"
+        
     }
     
     @IBAction func menuDismiss(_ sender: Any) {

@@ -1,29 +1,47 @@
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
 //
-//  TransferModel.swift
-//  FootballBottles
-//
-//  Created by Golyakovph on 19.12.2022.
-//
+//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
 
-import UIKit
+import Foundation
 
-struct Transfer {
-    let transferName: String
-    let transferTeamFirstImg: UIImage!
-    let transferTeamSecondImg: UIImage!
-    let transferCost: String
+// MARK: - Welcome
+struct Transfers: Codable {
+    let transfers: [Transfer]
 }
 
-let transfer: [Transfer] = [
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m"),
-    Transfer(transferName: "Jacobs Monah", transferTeamFirstImg: UIImage(named: "ball"), transferTeamSecondImg: UIImage(named: "ball"), transferCost: "\(18) m")
+// MARK: - Transfer
+struct Transfer: Codable {
+    let player: PlayerTransfer
+    let transferFrom, transferTo: TransferFromClass
+    let fromTeamName, toTeamName: String
+    let type: Int
+    let transferFee: Int?
+    let transferFeeDescription: TransferFeeDescription
+    let id, transferDateTimestamp: Int
+    let transferFeeRaw: TransferFeeRaw?
+}
 
-]
+// MARK: - Player
+struct PlayerTransfer: Codable {
+    let name, slug, shortName: String
+    let userCount, id: Int
+}
+
+enum TransferFeeDescription: String, Codable {
+    case empty = "-"
+    case free = "Free"
+}
+
+// MARK: - TransferFeeRaw
+struct TransferFeeRaw: Codable {
+    let value: Int
+}
+
+
+// MARK: - TransferFromClass
+struct TransferFromClass: Codable {
+    let name, slug, shortName: String
+    let userCount, type, id: Int
+}
+

@@ -34,6 +34,9 @@ class TransferVC: UIViewController {
         nameLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Name" : "Имя"
         clubLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Club" : "Клуб"
         costsLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Costs" : "Стоимость"
+        transferSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Players" : "Игроки", forSegmentAt: 0)
+        transferSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Matches" : "Матчи", forSegmentAt: 1)
+        transferSegmentedControl.setTitle(LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Transfer" : "Трансфер", forSegmentAt: 2)
     }
     
     @IBAction func menuDismiss(_ sender: Any) {
