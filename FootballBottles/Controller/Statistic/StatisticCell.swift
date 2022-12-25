@@ -13,11 +13,5 @@ class StatisticCell: UITableViewCell {
     @IBOutlet weak var secondTeamGoalLbl: UILabel!
     @IBOutlet weak var statLbl: UILabel!
     
-    func setup(with statistic: Statistic) {
-        firstTeamGoalLbl.text = String(statistic.firstTeamGoal)
-        secondTeamGoalLbl.text = String(statistic.secondTeamGoal)
-        statLbl.text = statistic.stat
-    }
-    
 }
 

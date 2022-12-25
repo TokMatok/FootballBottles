@@ -14,13 +14,6 @@ class TransferCell: UITableViewCell {
     @IBOutlet weak var transferTeamSecondImg: UIImageView!
     @IBOutlet weak var transferCostsLbl: UILabel!
 
-    func setup(with transfer: Transfer) {
-        transferName.text = transfer.transferName
-        transferTeamFirstImg.image = transfer.transferTeamFirstImg
-        transferTeamSecondImg.image = transfer.transferTeamSecondImg
-        transferCostsLbl.text = transfer.transferCost
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -9,11 +9,28 @@ import UIKit
 
 class HistoryVC: UIViewController {
     
-    
     @IBOutlet weak var historyTitle: UILabel!
     @IBOutlet weak var historyColectionView: UICollectionView!
     @IBOutlet weak var historySegmentedControl: UISegmentedControl!
     @IBOutlet weak var historyComingSoonButton: UIButton!
+    
+    var baseUrl = ""
+    
+    private var allGames: [Event] = []
+
+    var matchId: Int?
+   
+    init(title: String, id: Int? = nil, baseUrl: String) {
+        self.baseUrl = baseUrl
+        super.init(nibName: nil, bundle: nil)
+        self.title = title
+        self.matchId = id
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

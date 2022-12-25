@@ -62,7 +62,6 @@ extension StatisticVC: UITableViewDelegate, UITableViewDataSource {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundView
-        cell.setup(with: statistic[indexPath.row])
         return cell
     }
 }

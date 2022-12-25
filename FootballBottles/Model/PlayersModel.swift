@@ -1,40 +1,50 @@
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
 //
-//  PlayersModel.swift
-//  FootballBottles
-//
-//  Created by Golyakovph on 18.12.2022.
-//
+//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
 
-import UIKit
+import Foundation
 
-struct Players {
-    let number: Int
-    let name: String
-    let position: String
-    let weight: Int
-    let growth: Int
+// MARK: - Welcome
+struct Players: Codable {
+    let confirmed: Bool
+    let home, away: AwayPlayers
 }
 
+// MARK: - Away
+struct AwayPlayers: Codable {
+    let players: [PlayerElement]
+}
 
-let players: [Players] = [
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80),
-    Players(number: 1, name: "Jacobs Monarch", position: "Attack", weight: 80, growth: 80)
-    ]
+// MARK: - ErColor
+struct ErColor: Codable {
+    let primary, number, outline, fancyNumber: String
+}
+
+// MARK: - PlayerElement
+struct PlayerElement: Codable {
+    let player: PlayerPlayer
+}
+
+// MARK: - PlayerPlayer
+struct PlayerPlayer: Codable {
+    let name: String
+    let shortName: String
+    let position: Position
+}
+
+// MARK: - Country
+struct Country: Codable {
+    let alpha2, name: String
+}
+
+enum MarketValueCurrency: String, Codable {
+    case eur = "EUR"
+}
+
+enum Position: String, Codable {
+    case d = "D"
+    case f = "F"
+    case g = "G"
+    case m = "M"
+}

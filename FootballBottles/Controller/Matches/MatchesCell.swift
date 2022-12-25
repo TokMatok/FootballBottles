@@ -18,14 +18,16 @@ class MatchesCell: UICollectionViewCell {
     @IBOutlet weak var firstTeamImg: UIImageView!
     @IBOutlet weak var secontTeamImg: UIImageView!
     
-    func setup(with matches: Matches) {
-        favoritesImg.image = matches.favorites
-        timeLbl.text = matches.time
-        dateLbl.text = matches.date
-        firstTeamLbl.text = matches.firstTeam
-        secondTeamLbl.text = matches.secondTeam
-        firstTeamImg.image = matches.firstTeamImg
-        secontTeamImg.image = matches.secondTeamImg
+    func configure(match: Event) {
+        firstTeamLbl.text = match.homeTeam.name
+        secondTeamLbl.text = match.awayTeam.name
+        
+        
+        let date = Date(timeIntervalSince1970: Double(match.startTimestamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM\n  "
+        dateLbl.text = dateFormatter.string(from: date)
     }
+
 
 }

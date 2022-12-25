@@ -13,6 +13,10 @@ class TeamsVC: UIViewController {
     @IBOutlet weak var teamsTitle: UILabel!
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     
+    private var teams: [TeamTeam] = []
+    
+    var baseUrl: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,11 +30,42 @@ class TeamsVC: UIViewController {
         teamsTitle.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "Teams" : "Команды"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getTeams()
+    }
+    
     @IBAction func menuDismiss(_ sender: Any) {
         showVC(id: "menu")
     }
     
+    func getTeams() {
+        let url = URL(string: baseUrl)
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        print(request)
+        print(baseUrl)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data, error == nil else { return }
+            
+            do {
+                let jsonDecoder = JSONDecoder()
+                let responseModel = try jsonDecoder.decode(TeamsModel.self, from: data)
+                self.teams = responseModel.teams
+                
+                DispatchQueue.main.async {
+                    self.teamsCollectionView.reloadData()
+                }
+            }catch {
+                print("ERROR")
+            }
+            
+        }.resume()
+    }
 }
+
 
 
 extension TeamsVC: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -39,7 +74,12 @@ extension TeamsVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showVC(id: "players")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "players") as! PlayersVC
+        vc.teamID = teams[indexPath.row].id
+        print(teams[indexPath.row].id)
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,8 +87,7 @@ extension TeamsVC: UICollectionViewDataSource, UICollectionViewDelegate {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundView
-        cell.teamsTextLbl.text = LocalizationSystem.sharedInstance.getLanguage() == "en" ? "EN" : "RU"
-        cell.setup(with: teams[indexPath.row])
+        cell.teamsTextLbl.text = teams[indexPath.row].shortName
         return cell
     }
     
