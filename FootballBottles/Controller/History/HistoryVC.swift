@@ -16,20 +16,9 @@ class HistoryVC: UIViewController {
     
     var baseUrl = ""
     
-    private var allGames: [Event] = []
+    var allGames: [Event] = []
 
-    var matchId: Int?
-   
-    init(title: String, id: Int? = nil, baseUrl: String) {
-        self.baseUrl = baseUrl
-        super.init(nibName: nil, bundle: nil)
-        self.title = title
-        self.matchId = id
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var matchId = 0
 
     
     override func viewDidLoad() {

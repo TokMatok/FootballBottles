@@ -56,7 +56,7 @@ class MatchesVC: UIViewController {
     }
     
     func getData() {
-        let url = URL(string: baseUrl)
+        let url = URL(string: MatchUrls.ru)
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         
@@ -94,8 +94,10 @@ extension MatchesVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.title == "Favorites" || self.title == "Matches"
                 || self.title == "Избранное" || self.title == "Матчи" else { return }
-        let vc = HistoryVC(id: allGames[indexPath.row].id, match: allGames[indexPath.row])
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryVC
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,24 +107,10 @@ extension MatchesVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "matches",
+            withReuseIdentifier: "matchesCell",
             for: indexPath) as? MatchesCell
         else { return UICollectionViewCell() }
         cell.configure(match: allGames[indexPath.row])
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = view.frame.width / 2 - 20
-        return CGSize(width: size, height: size)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 8, bottom: 200, right: 8)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        10
-    }
-    
 }
